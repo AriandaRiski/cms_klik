@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head />
-      <body class="leading-normal tracking-normal text-white gradient">
+      <body className="leading-normal tracking-normal text-white gradient">
         <Main />
         <NextScript />
       </body>
