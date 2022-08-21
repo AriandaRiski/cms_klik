@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-const BlogDetail = ({data}) => {
 
+const BlogDetail = ({data}) => {
     const { id } = useRouter().query;
     return (
         <>
