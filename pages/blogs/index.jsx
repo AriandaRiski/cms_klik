@@ -19,8 +19,7 @@ const Blog = ({getData_SSR}) => {
       }, []);
 
     const deletePost = (getData_SSR)=>{        
-        if (window.confirm("apakah anda yakin ingin menghapus data?")) {
-            // console.log(getData_SSR.id);
+        if (window.confirm("apakah anda yakin ingin menghapus data?")) {            
             const newBlogs = blogs.filter(item => item.id != getData_SSR)               
             setBlogs(newBlogs)
         }    
