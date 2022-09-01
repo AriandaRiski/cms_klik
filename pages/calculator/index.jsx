@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import Layout from "@/layouts/Layout";
 import Result from "@/components/Calculator/result";
 import Input from "@/components/Calculator/input";
 import Button from "@/components/Calculator/button";
-import { useState, useEffect } from "react";
 
 
 const Calculator = (e) => {
@@ -15,10 +15,10 @@ const Calculator = (e) => {
     const [hasil, setHasil] = useState(0)
     
     
-    const Execute = (tombol) =>{       
+    const Execute = (val,tombol) =>{       
         
-        let val1 = Number(values.input1)
-        let val2 = Number(values.input2)
+        let val1 = Number(val.input1)
+        let val2 = Number(val.input2)
         hasil = 0
 
         if(tombol){
@@ -46,7 +46,7 @@ const Calculator = (e) => {
         }     
 
     useEffect(() => {
-        Execute(tombol);
+        Execute(values,tombol);
  
      }, [values, tombol]);
 
