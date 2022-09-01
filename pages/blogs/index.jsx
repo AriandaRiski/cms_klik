@@ -2,7 +2,6 @@ import Layout from '@/layouts/Layout'
 import Item from '@/components/Section/Item'
 import Form from '@/components/Form'
 
-
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
@@ -71,7 +70,7 @@ const Blog = ({getData_SSR}) => {
                         <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800 pt-12">
                             Jumlah Article {jumlahPost}
                         </h2>
-                        <Form callback={callback} blogs={blogs} setBlogs={setBlogs} submit={submit} update={update}/>
+                        <Form callback={callback} blogs={blogs} setBlogs={setBlogs} submit={submit} setSubmit={setSubmit}/>
 
                         <div className="w-full mb-4">
                             <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
