@@ -1,42 +1,45 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { BlogContext } from '@/components/Context/BlogContext'
+
 const initialValues = {
   title : "",
   body : "",
 }
 
-// const Form = ({callback, update, submit}) => {
-const Form = ({blogs, setBlogs, submit, setSubmit}) => {
-    
+
+const Form = () => {
+
+    const formData = useContext(BlogContext);
     const [value, setValue] = useState (initialValues)
 
     useEffect(() => {        
-      if(submit){
-        setValue({title: submit.title,  body: submit.body})       
+      if(formData.blogsByid){
+        setValue({title: formData.blogsByid.title,  body: formData.blogsByid.body})       
       } else {
         setValue(initialValues)
       }
-    }, [setValue, submit]);
+    }, [setValue, formData.blogsByid]);
 
     
 
    
     const handleSubmit = (e) => {
       e.preventDefault()
-      // console.log(submit);
-       if(submit.id){
-            const newBlogs = [...blogs]
-            const blogsByid = newBlogs.findIndex((b => b.id == submit.id));
+      
+       if(formData.blogsByid.id){
+            const newBlogs = [...formData.blogs]
+            const blogsByid = newBlogs.findIndex((b => b.id == formData.blogsByid.id));
             newBlogs[blogsByid].title = value.title
             newBlogs[blogsByid].body = value.body
-            console.log(newBlogs);
-            setBlogs(newBlogs);
+            
+            formData.setBlogs(newBlogs);
             setValue(initialValues)
-            setSubmit('')
+            formData.setBlogsbyId('')
         }else{
-            const NewData = [...blogs, {'userId': 11, 'id':blogs.length +1 , 'title' : value.title, 'body' : value.body}]
+            const NewData = [...formData.blogs, {'userId': 11, 'id':formData.blogs.length +1 , 'title' : value.title, 'body' : value.body}]
             const sortDesc = [...NewData]
             sortDesc.sort((a, b) => (a.id > b.id ? -1 : 1))
-            setBlogs(sortDesc)
+            formData.setBlogs(sortDesc)
             setValue(initialValues)            
         }
     }
@@ -79,8 +82,7 @@ const Form = ({blogs, setBlogs, submit, setSubmit}) => {
           </div>
           <div className="flex items-center">
             <button
-              className="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-1 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out "
-              // type="button" onClick={(e) => tambah(e)}
+              className="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-1 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out "              
               type="submit"
             >
               Insert

@@ -25,8 +25,7 @@ const BlogDetail = ({data}) => {
 export async function getServerSideProps(context) {
     // Fetch data from external API
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.query.id}`)
-    const data = await res.json()
-    console.log(context);
+    const data = await res.json()    
     // Pass data to the page via props
     return { props: { data } }
   }

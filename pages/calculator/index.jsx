@@ -15,10 +15,10 @@ const Calculator = (e) => {
     const [hasil, setHasil] = useState(0)
     
     
-    const Execute = (val,tombol) =>{       
+    const Execute = (values,tombol) =>{       
         
-        let val1 = Number(val.input1)
-        let val2 = Number(val.input2)
+        let val1 = Number(values.input1)
+        let val2 = Number(values.input2)
         hasil = 0
 
         if(tombol){
@@ -42,8 +42,8 @@ const Calculator = (e) => {
         }else{
             hasil = val1+val2
         }
-        setHasil(hasil)
-        }     
+    setHasil(hasil)
+    }     
 
     useEffect(() => {
         Execute(values,tombol);
